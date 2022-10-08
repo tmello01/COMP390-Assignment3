@@ -1,16 +1,22 @@
-# This is a sample Python script.
+from deck import Deck
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    new_deck = Deck()
+    new_deck.create_cards()
+
+    print_deck(new_deck)
+
+    new_deck.shuffle_deck()
+
+    print_deck(new_deck)
+def print_deck(deck):
+    counter = 1
+    for card in deck.Cards:
+        print(f'card {counter}: {card.Value.name} of {card.Suit.name}')
+        counter += 1
+    print()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    main()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
