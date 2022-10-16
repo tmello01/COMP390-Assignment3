@@ -1,21 +1,28 @@
 from suit import Suit
 from value import Value
 from card import Card
-
 from random import sample
+
 
 class Deck:
     def __init__(self):
-        self.Cards = []
+        self.cards = []
+        self.deck_position = 0
 
     def create_cards(self):
+        self.cards = []
         for suits in Suit:
             for values in Value:
-                self.Cards.append(Card(suits, values))
+                self.cards.append(Card(suits, values))
 
     def shuffle_deck(self):
+        self.deck_position = 0
         shuffled_cards = []
-
         for index in sample(range(0, 52), 52):
-            shuffled_cards.append(self.Cards[index])
-        self.Cards = shuffled_cards
+            shuffled_cards.append(self.cards[index])
+        self.cards = shuffled_cards
+
+    def get_card(self):
+        card = self.cards[self.deck_position]
+        self.deck_position += 1
+        return card
