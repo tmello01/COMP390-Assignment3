@@ -2,6 +2,7 @@ from suit import Suit
 from value import Value
 from card import Card
 from random import sample
+from exceptions import EmptyDeckException
 
 
 class Deck:
@@ -23,6 +24,8 @@ class Deck:
         self.cards = shuffled_cards
 
     def get_card(self):
+        if self.deck_position == 52:
+            raise EmptyDeckException("unable to get next card, empty deck found.")
         card = self.cards[self.deck_position]
         self.deck_position += 1
         return card
